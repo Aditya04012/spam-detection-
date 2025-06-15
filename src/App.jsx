@@ -1,6 +1,8 @@
 import React,{useState} from 'react'
 import "./App.css"
-
+const API_BASE = import.meta.env.PROD
+  ? "https://email-spam-detaction-3.onrender.com"
+  : "/api";
 
 function App() {
 const [loading, setloading] = useState(false);
@@ -14,7 +16,7 @@ const[prediction,setPrediction]=useState("");
 
 
     try{
-    const response=await fetch('/api/predict',{
+    const response=await fetch(`${API_BASE}/predict`,{
         method:'POST',
           headers: {
           "Content-Type": "application/json",
